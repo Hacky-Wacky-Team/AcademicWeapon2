@@ -11,6 +11,7 @@ const QuestionGenerator = () => {
 
   const changeImage = () => {
     setShowImage(!showImage);
+    console.log('jonny a fweok');
   };
 
   const [subtopics, setSubtopics] = useState({
@@ -106,9 +107,9 @@ const QuestionGenerator = () => {
       <button id="get-question" onClick={changeImage}>Get Random Question</button>
       <div id="question-display" className="display-box">
         {showImage ? (
-          <img src='./Images/Physics/Kinematics 1/Screenshot 2024-12-13 181052.png' alt="Random Question" style={{ maxWidth: '100%', height: 'auto' }} />
+          <img src="AcademicWeapon2/Images/Physics/Fields 2/Screenshot 2024-12-16 181636.png" alt="Random Question" style={{ maxWidth: '100%', height: 'auto' }} />
         ) : (
-          <img src='./Images/Physics/Dynamics/Screenshot 2024-12-13 184638.png' alt="Random Question" style={{ maxWidth: '100%', height: 'auto' }} />
+          <img src="AcademicWeapon2/Images/Physics/Kinematics 1/Screenshot 2024-12-22 204940.png" alt="Random Question" style={{ maxWidth: '100%', height: 'auto' }} />
         )}
       </div>
     </div>
