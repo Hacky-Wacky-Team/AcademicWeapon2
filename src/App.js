@@ -106,6 +106,9 @@ const QuestionGenerator = () => {
       </div>
       <button id="get-question" onClick={changeImage}>Get Random Question</button>
       <div id="question-display" className="display-box">
+        {/* REMOVE ACADEMICWEAPON2/ FROM THE PATH */}
+        {/* REMOVE ACADEMICWEAPON2/ FROM THE PATH */}
+        {/* REMOVE ACADEMICWEAPON2/ FROM THE PATH */}
         {showImage ? (
           <img src="AcademicWeapon2/Images/Physics/Fields 2/Screenshot 2024-12-16 181636.png" alt="Random Question" style={{ maxWidth: '100%', height: 'auto' }} />
         ) : (

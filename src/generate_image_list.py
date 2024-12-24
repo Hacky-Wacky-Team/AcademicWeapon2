@@ -13,6 +13,9 @@ def generate_image_list(base_path):
         parts = relative_path.split("/")
 
         # Collect all image files in this folder
+        #############################################
+        ### REMOVE ACADEMICWEAPON2/ FROM THE PATH ###
+        #############################################
         images = ["AcademicWeapon2/Images/" + os.path.join(relative_path, file).replace("\\", "/") 
                   for file in files 
                   if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
