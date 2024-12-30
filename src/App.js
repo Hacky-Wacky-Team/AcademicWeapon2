@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import imageList from './list.json';
 
 const QuestionGenerator = () => {
   const [subjects, setSubjects] = useState({
@@ -7,11 +8,10 @@ const QuestionGenerator = () => {
     Physics: false,
     Data: false
   });
-  const [showImage, setShowImage] = useState(true);
+  const [showImage, setShowImage] = useState(null);
 
   const changeImage = () => {
-    setShowImage(!showImage);
-    console.log('jonny a fweok');
+    getRandomQuestion();
   };
 
   const [subtopics, setSubtopics] = useState({
@@ -94,8 +94,27 @@ const QuestionGenerator = () => {
   );
 
   const getRandomQuestion = () => {
-    // Stub function; add your random question handling here
-    alert('Random question...');
+    const selectedUnits = Object.keys(subtopics).flatMap(subjectKey =>
+      subtopics[subjectKey].filter(topic => topic.checked).map(topic => topic.value)
+    );
+
+    if (selectedUnits.length === 0) {
+      alert('Please select at least one unit.');
+      return;
+    }
+
+    const images = selectedUnits.flatMap(unit => {
+      const [subject, unitName] = unit.split('/');
+      return imageList[subject]?.[unitName]?.images || [];
+    });
+
+    if (images.length === 0) {
+      alert('No images found for the selected units.');
+      return;
+    }
+
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+    setShowImage(randomImage);
   };
 
   return (
@@ -106,13 +125,10 @@ const QuestionGenerator = () => {
       </div>
       <button id="get-question" onClick={changeImage}>Get Random Question</button>
       <div id="question-display" className="display-box">
-        {/* REMOVE ACADEMICWEAPON2/ FROM THE PATH */}
-        {/* REMOVE ACADEMICWEAPON2/ FROM THE PATH */}
-        {/* REMOVE ACADEMICWEAPON2/ FROM THE PATH */}
         {showImage ? (
-          <img src="AcademicWeapon2/Images/Physics/Fields 2/Screenshot 2024-12-16 181636.png" alt="Random Question" style={{ maxWidth: '100%', height: 'auto' }} />
+          <img src={showImage} alt="Random Question" style={{ maxWidth: '100%', height: 'auto' }} />
         ) : (
-          <img src="AcademicWeapon2/Images/Physics/Kinematics 1/Screenshot 2024-12-22 204940.png" alt="Random Question" style={{ maxWidth: '100%', height: 'auto' }} />
+          <p>No image selected</p>
         )}
       </div>
     </div>
